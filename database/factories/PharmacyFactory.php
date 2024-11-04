@@ -12,7 +12,7 @@ class PharmacyFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->company(),
+            'name' => $this->faker->company() . ' ' .  $this->faker->numberBetween(1, 999999),
             'address' => $this->faker->address(),
         ];
     }

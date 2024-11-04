@@ -13,7 +13,7 @@ class PharmacyProductSeeder extends Seeder
         $pharmacies = Pharmacy::all();
 
         foreach ($pharmacies as $pharmacy) {
-            $productIds = Product::inRandomOrder()->take(rand(1, 50000))->pluck('id');
+            $productIds = Product::inRandomOrder()->take(rand(1, 50))->pluck('id');
             $pharmacy->products()->attach($productIds);
         }
     }
