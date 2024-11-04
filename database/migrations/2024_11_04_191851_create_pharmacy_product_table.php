@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('pharmacy_id')->constrained()->onDelete('cascade');
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->unsignedInteger('price');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

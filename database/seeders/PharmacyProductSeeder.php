@@ -14,7 +14,10 @@ class PharmacyProductSeeder extends Seeder
 
         foreach ($pharmacies as $pharmacy) {
             $productIds = Product::inRandomOrder()->take(rand(1, 50))->pluck('id');
-            $pharmacy->products()->attach($productIds);
+            $pharmacy->products()->attach($productIds, [
+                'quantity' => fake()->numberBetween(1, 100),
+                'price' => fake()->randomNumber(9, 1),
+            ]);
         }
     }
 }
