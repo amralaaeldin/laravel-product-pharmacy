@@ -17,4 +17,9 @@ class Pharmacy extends Model
     {
         return $this->belongsToMany(Product::class, 'pharmacy_product')->withPivot('price', 'quantity');
     }
+
+    public function getPriceAttribute()
+    {
+        return $this->pivot->price / 100;
+    }
 }
