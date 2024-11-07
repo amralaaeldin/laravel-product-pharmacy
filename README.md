@@ -12,6 +12,11 @@ This is a Laravel-based application that allows you to manage products and pharm
 -   **Image Upload**: Ability to upload product images with validation.
 -   **RESTful API**: API endpoints for interacting with products and pharmacies.
 -   **CLI Command**: A CLI command to list the 5 cheapest pharmacies for a given product.
+    For Example:
+
+```bash
+php artisan products:search-cheapest 5
+```
 
 ## Requirements
 
