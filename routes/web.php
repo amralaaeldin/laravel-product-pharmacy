@@ -20,4 +20,4 @@ Route::get('/', function () {
 });
 
 Route::resource('products', ProductController::class);
-Route::resource('pharmacies', PharmacyController::class);
+Route::resource('pharmacies', PharmacyController::class)->except(['show']);
