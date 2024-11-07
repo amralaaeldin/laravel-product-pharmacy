@@ -66,27 +66,32 @@
                 <!-- Previous Button -->
                 <li class="page-item {{ $products->currentPage() == 1 ? 'disabled' : '' }}">
                     <a class="page-link"
-                        href="{{ $products->currentPage() > 1 ? $products->path() . '?page=' . ($products->currentPage() - 1) : '#' }}">Previous</a>
+                        href="{{ $products->currentPage() > 1 ? $products->path() . '?page=' . ($products->currentPage() - 1) . '&count=' . $products->perPage() : '#' }}">Previous</a>
                 </li>
 
                 <!-- Next Button -->
                 <li class="page-item {{ $products->currentPage() == $products->lastPage() ? 'disabled' : '' }}">
                     <a class="page-link"
-                        href="{{ $products->currentPage() < $products->lastPage() ? $products->path() . '?page=' . ($products->currentPage() + 1) : '#' }}">Next</a>
+                        href="{{ $products->currentPage() < $products->lastPage() ? $products->path() . '?page=' . ($products->currentPage() + 1) . '&count=' . $products->perPage() : '#' }}">Next</a>
                 </li>
             </ul>
 
             <!-- Items per Page Selector -->
-            <form action="{{ $products->path() }}" method="GET" class="form-inline w-75">
-                <label for="perPage" class="mr-2">Items per page:</label>
-                <select class="d-inline" name="count" id="count" class="form-control" onchange="this.form.submit()">
-                    <option value="10" {{ $products->perPage() == 10 ? 'selected' : '' }}>10</option>
-                    <option value="25" {{ $products->perPage() == 25 ? 'selected' : '' }}>25</option>
-                    <option value="50" {{ $products->perPage() == 50 ? 'selected' : '' }}>50</option>
-                    <option value="100" {{ $products->perPage() == 100 ? 'selected' : '' }}>100</option>
-                </select>
-                <input type="hidden" name="page" value="{{ $products->currentPage() }}">
-            </form>
+            <label for="perPage" class="mr-2">Items per page:</label>
+            <ul class="pagination w-25">
+                <li class="page-item ml-3 btn">
+                    <a href="{{ $products->path() . '?page=' . $products->currentPage() . '&count=10' }}">10</a>
+                </li>
+                <li class="page-item ml-3 btn">
+                    <a href="{{ $products->path() . '?page=' . $products->currentPage() . '&count=25' }}">25</a>
+                </li>
+                <li class="page-item ml-3 btn">
+                    <a href="{{ $products->path() . '?page=' . $products->currentPage() . '&count=50' }}">50</a>
+                </li>
+                <li class="page-item ml-3 btn">
+                    <a href="{{ $products->path() . '?page=' . $products->currentPage() . '&count=100' }}">100</a>
+                </li>
+            </ul>
         </nav>
     </main>
 @endsection
