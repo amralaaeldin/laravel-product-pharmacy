@@ -37,5 +37,9 @@ RUN composer run-script post-autoload-dump
 # Expose port 80 for the web server
 EXPOSE 80/tcp
 
+# Set Apache DocumentRoot to Laravel's public directory
+RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
+RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/apache2.conf
+
 # Start Apache in the foreground
 CMD ["apache2-foreground"]

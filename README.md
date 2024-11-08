@@ -113,7 +113,7 @@ docker-compose exec app php artisan storage:link
 
 #### Step 6: Start the Development Server
 
-You can access the application at `http://localhost:8000/public`.
+You can access the application at `http://localhost:8000`.
 
 ## Troubleshooting
 
