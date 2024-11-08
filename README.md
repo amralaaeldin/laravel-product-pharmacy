@@ -28,6 +28,8 @@ php artisan products:search-cheapest 5
 
 ## Installation
 
+### Without Docker
+
 #### Step 1: Clone the Repository & Install Dependencies
 
 Clone the repository to your local machine:
@@ -61,3 +63,63 @@ You can start the development server using the following command:
 ```bash
 php artisan serve
 ```
+
+### With Docker
+
+#### Step 1: Clone the Repository
+
+Clone the repository to your local machine:
+
+```bash
+git clone https://github.com/amralaaeldin/laravel-product-pharmacy
+cd laravel-product-pharmacy
+```
+
+#### Step 2: Build the Docker Image using Docker Compose
+
+Build the Docker image using the following command:
+
+```bash
+docker-compose build
+```
+
+#### Step 3: Start the Docker Containers
+
+Start the Docker containers using the following command:
+
+```bash
+docker-compose up -d
+```
+
+#### Step 4: Install Composer Dependencies
+
+Install the Composer dependencies inside the PHP container:
+
+```bash
+docker-compose exec app composer install
+```
+
+#### Step 5: Generate an Application Key & Set Up the App
+
+Generate an application key using the
+following command:
+
+```bash
+docker-compose exec app php artisan key:generate
+docker-compose exec app php artisan migrate
+docker-compose exec app php artisan db:seed //optional
+docker-compose exec app php artisan storage:link
+```
+
+#### Step 6: Start the Development Server
+
+You can access the application at `http://localhost:8000/public`.
+
+## Troubleshooting
+
+If you run into issues:
+
+-   Ensure Docker is running if you're using Docker.
+-   Check the Laravel logs (storage/logs/laravel.log) for detailed error messages.
+-   Make sure you have the correct file permissions if you're running on a local system.
+-   Check your .env file for any configuration mistakes (like the wrong database credentials).
